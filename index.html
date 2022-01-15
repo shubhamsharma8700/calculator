@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Calculator</title>
+        <style>
+        *{
+            margin:0;
+            padding:0;
+            background:#ecf0f3;
+            
+        }
+        body{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            flex-direction:column;
+        }
+        .calculator{
+         display:flex;
+         flex-direction:column;
+         justify-content:center;
+         align-items:center;
+         border:2px solid white;
+         padding:0.2rem;
+         border-radius:15px;
+         background-color: #ecf0f3;
+         width:340px;
+         
+         box-shadow: inset 5px 5px 12px #ffffff,
+
+                    5px 5px 12px rgba(0,0,0,.16); 
+    
+}
+    
+        
+        .cal-screen input[type="text"]{
+            
+            border:none;
+            width:295px;
+            height:4rem;
+            margin:10px 0;
+            padding:10px;
+            border-radius:15px;
+            background-color: #ecf0f3;
+            text-align: end;
+            color: rgb(70, 70, 70);
+            font-size: 50px;
+            box-shadow: inset -5px -5px 12px #ffffff,
+                        inset 5px 5px 12px rgba(0,0,0,.16);
+        }   
+        input:focus{
+            outline:none;
+        }  
+        
+        button {
+        width:4.3rem;
+        height:4rem;
+        color: #090909;
+        margin:4px;
+        font-size: 25px;
+        border-radius: 0.5em;
+        background: #ecf0f3;
+        border:none;
+        box-shadow: inset 5px 5px 12px #ffffff,
+                    5px 5px 12px rgba(0,0,0,.16); 
+             
+        }
+
+        button:active {
+        color: #666;
+        box-shadow: inset 4px 4px 12px #c5c5c5,
+                    inset -4px -4px 12px #ffffff;
+        }
+
+       .equal{
+        background:orange;
+        color:white;
+        width:9.5rem;
+        box-shadow: inset 4px 4px 12px orange,
+                    inset -4px -4px 12px orange;
+       }
+      .equal:active{
+       box-shadow: inset 4px 4px 12px rgb(204, 122, 0),
+                      inset -4px -4px 12px rgb(204, 122,0);
+    
+      }
+      .orange-color{
+      color:orange;
+      }
+
+       h1{
+       margin:20px;
+       padding:5px;
+        color:orange;
+    
+      }
+
+        </style>
+    </head>
+    <body>
+    <h1>Web Calculator</h1>
+    <div class="calculator">
+        <div class="cal-screen">
+            <input type="text" id="screen" placeholder="0" readonly/>
+        </div>
+        <div class="cal-buttons">
+            <button class="orange-color" onclick="clean()">Ac</button>
+            <button class="orange-color"onclick="del()">del</button>
+            <button class="orange-color"onclick="display('%')">%</button>
+            <button class="orange-color"onclick="display('/')">÷</button>
+        </div>
+        <div class="cal-buttons">
+            <button onclick="display('7')">7</button>
+            <button onclick="display('8')">8</button>
+            <button onclick="display('9')">9</button>
+            <button class="orange-color" onclick="display('*')">*</button>
+        </div>
+        <div class="cal-buttons">
+            <button onclick="display('4')">4</button>
+            <button onclick="display('5')">5</button>
+            <button onclick="display('6')">6</button>
+            <button class="orange-color"onclick="display('-')">-</button>
+        </div>
+        <div class="cal-buttons">
+            <button onclick="display('3')">3</button>
+            <button onclick="display('2')">2</button>
+            <button onclick="display('1')">1</button>
+            <button class="orange-color"onclick="display('+')">+</button>
+        </div>
+        <div class="cal-buttons" style="margin-bottom: 15px;">
+            
+            <button onclick="display('.')">.</button>
+            <button onclick="display('0')">0</button>
+            <button class="equal" onclick="calculate()">=</button>
+        </div>
+    </div>
+    
+    
+    <script>
+    
+let screen =document.getElementById('screen');
+
+function display(num){
+    screen.value += num;
+}
+
+
+function calculate(){
+    try{
+        screen.value =eval(screen.value );
+    }
+    catch(err){
+        screen.value="error";
+    }
+}
+
+
+function clean(){
+screen.value ="";
+}
+
+function del(){
+    screen.value =screen.value.slice(0,-1);
+}
+
+
+    </script>
+        
+    </body>
+</html>
